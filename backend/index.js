@@ -12,9 +12,9 @@ app.use('/profileImgs', express.static(path.join(__dirname, 'public/profileImgs'
 app.use('/resume', express.static(path.join(__dirname, 'public/resumes')));
 app.use('/offerLetter', express.static(path.join(__dirname, 'public/offerLetter')));
 
-// database import 
-const mongodb = require('./config/MongoDB');
-mongodb();
+// database import (Firebase Cloud Firestore)
+const { connectFirebase } = require('./config/Firebase');
+connectFirebase();
 
 
 // routes for user

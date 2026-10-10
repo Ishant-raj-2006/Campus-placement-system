@@ -1,32 +1,18 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const JobSchema = require('./job.model');
+const { FirestoreAdapter } = require('./firestoreAdapter');
 
-const companySchema = new Schema({
-  companyName: { type: String, required: true },
-  companyDescription: { type: String },
-  companyWebsite: { type: String },
-  companyLocation: { type: String, trim: true },
-  companyDifficulty: { type: String, enum: ['Easy', 'Moderate', 'Hard'] }
-});
+const companyAdapter = new FirestoreAdapter('companies');
 
+function CompanyModel(data = {}) {
+  return companyAdapter.createInstance(data);
+}
 
-// Pre middleware to delete jobs when the company is deleted
-companySchema.pre('deleteOne', { document: true, query: false }, async function (next) {
-  try {
-    const companyId = this._id; // Get the current company's ID
+CompanyModel.findOne = (query) => companyAdapter.findOne(query);
+CompanyModel.find = (query) => companyAdapter.find(query);
+CompanyModel.findById = (id) => companyAdapter.findById(id);
+CompanyModel.findByIdAndUpdate = (id, update, options) => companyAdapter.findByIdAndUpdate(id, update, options);
+CompanyModel.findByIdAndDelete = (id) => companyAdapter.findByIdAndDelete(id);
+CompanyModel.create = (data) => companyAdapter.create(data);
+CompanyModel.updateMany = (query, update) => companyAdapter.updateMany(query, update);
+CompanyModel.deleteMany = (query) => companyAdapter.deleteMany(query);
 
-    // Dynamically load the Job model to avoid circular dependency
-    const Job = mongoose.model('Job');
-
-    // Delete all jobs associated with this company
-    await Job.deleteMany({ company: companyId });
-
-    next(); // Proceed with the company deletion
-  } catch (error) {
-    next(error); // Pass any errors to the next middleware
-  }
-});
-
-
-module.exports = mongoose.model('Company', companySchema);
+module.exports = CompanyModel;

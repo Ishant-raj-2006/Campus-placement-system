@@ -1,53 +1,18 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const { FirestoreAdapter } = require('./firestoreAdapter');
 
-const jobSchema = new mongoose.Schema({
-  jobTitle: { type: String, required: true },
-  jobDescription: { type: String, required: true },
-  eligibility: { type: String },
-  salary: { type: Number },
-  howToApply: { type: String },
-  postedAt: { type: Date, default: Date.now },
-  applicationDeadline: { type: Date },
-  // company details
-  company: { type: Schema.Types.ObjectId, ref: 'Company', required: true },
-  // applicants details
-  applicants: [
-    {
-      studentId: { type: Schema.Types.ObjectId, ref: 'Users' },
-      currentRound: {
-        type: String,
-        enum: ['Aptitude Test', 'Technical Interview', 'HR Interview', 'Group Discussion']
-      },
-      roundStatus: { type: String, enum: ['pending', 'passed', 'failed'] },
-      selectionDate: { type: Date },
-      joiningDate: { type: Date },
-      offerLetter: { type: String },
-      status: { type: String, enum: ['applied', 'interview', 'hired', 'rejected'], default: 'applied' },
-      appliedAt: { type: Date, default: Date.now }
-    }
-  ]
-});
+const jobAdapter = new FirestoreAdapter('jobs');
 
+function JobModel(data = {}) {
+  return jobAdapter.createInstance(data);
+}
 
-// Middleware to delete the jobId from user's appliedJobs array before deleting the job
-jobSchema.pre('deleteOne', { document: true, query: false }, async function (next) {
-  try {
-    const jobId = this._id; // Get the current job's ID
+JobModel.findOne = (query) => jobAdapter.findOne(query);
+JobModel.find = (query) => jobAdapter.find(query);
+JobModel.findById = (id) => jobAdapter.findById(id);
+JobModel.findByIdAndUpdate = (id, update, options) => jobAdapter.findByIdAndUpdate(id, update, options);
+JobModel.findByIdAndDelete = (id) => jobAdapter.findByIdAndDelete(id);
+JobModel.create = (data) => jobAdapter.create(data);
+JobModel.updateMany = (query, update) => jobAdapter.updateMany(query, update);
+JobModel.deleteMany = (query) => jobAdapter.deleteMany(query);
 
-    const User = mongoose.model('Users');
-
-    // Remove the jobId from all users' appliedJobs array
-    await User.updateMany(
-      { 'studentProfile.appliedJobs.jobId': jobId }, // Find users who applied to this job
-      { $pull: { 'studentProfile.appliedJobs': { jobId: jobId } } } // Remove the jobId from appliedJobs array
-    );
-
-    next(); // Proceed with the job deletion
-  } catch (error) {
-    next(error); // Pass any errors to the next middleware
-  }
-});
-
-
-module.exports = mongoose.model('Job', jobSchema);
+module.exports = JobModel;

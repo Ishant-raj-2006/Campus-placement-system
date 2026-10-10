@@ -1,12 +1,18 @@
-const mongoose = require('mongoose');
+const { FirestoreAdapter } = require('./firestoreAdapter');
 
-const NoticeSchema = new mongoose.Schema({
-  sender: { type: mongoose.Schema.Types.ObjectId, ref: 'Users', required: true },
-  sender_role: { type: String, enum: ['student', 'tpo_admin', 'management_admin'], required: true },
-  receiver_role: { type: String, enum: ['student', 'tpo_admin', 'management_admin'], required: true },
-  title: { type: String },
-  message: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now }
-});
+const noticeAdapter = new FirestoreAdapter('notices');
 
-module.exports = mongoose.model('Notice', NoticeSchema);
+function NoticeModel(data = {}) {
+  return noticeAdapter.createInstance(data);
+}
+
+NoticeModel.findOne = (query) => noticeAdapter.findOne(query);
+NoticeModel.find = (query) => noticeAdapter.find(query);
+NoticeModel.findById = (id) => noticeAdapter.findById(id);
+NoticeModel.findByIdAndUpdate = (id, update, options) => noticeAdapter.findByIdAndUpdate(id, update, options);
+NoticeModel.findByIdAndDelete = (id) => noticeAdapter.findByIdAndDelete(id);
+NoticeModel.create = (data) => noticeAdapter.create(data);
+NoticeModel.updateMany = (query, update) => noticeAdapter.updateMany(query, update);
+NoticeModel.deleteMany = (query) => noticeAdapter.deleteMany(query);
+
+module.exports = NoticeModel;
