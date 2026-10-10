@@ -137,7 +137,7 @@ cd college-placement-system
 
 ## Contributors
 - **Member 1**: [Ishant Raj ](https://www.linkedin.com/in/ishant-raj-b82901219/?isSelfProfile=true)
-- **Member 2**: Anjali Kumari
-- **Member 3**: Anushka Shreya
+- **Member 2**: [Anjali Kumari](https://www.linkedin.com/in/anjali-chauhan-4440b83a9?utm_source=share_via&utm_content=profile&utm_medium=member_android)
+- **Member 3**: [Anushka Shreya](https://www.linkedin.com/in/anushka-shreya-a77093353?utm_source=share_via&utm_content=profile&utm_medium=member_android)
 - **Member 4**: Aarti Kumari
 
