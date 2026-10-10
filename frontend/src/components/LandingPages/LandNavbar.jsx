@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Logo from '../../assets/CPMS.png';
+import logoImg from '@root/logo.png';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
@@ -8,7 +8,7 @@ function LandingNavbar() {
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [buttonSize, setButtonSize] = useState('lg');
-  const [logoText, setLogoText] = useState('College Placement Management System');
+  const [logoText, setLogoText] = useState('Vishveshwarya Group of Institutions');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,13 +19,13 @@ function LandingNavbar() {
       const width = window.innerWidth;
       if (width <= 600) {
         setButtonSize('sm');
-        setLogoText('CPMS');
+        setLogoText('VGI Placement');
       } else if (width <= 768) {
         setButtonSize('md');
-        setLogoText('College Placement Management System');
+        setLogoText('Vishveshwarya Group of Institutions');
       } else {
         setButtonSize('lg');
-        setLogoText('College Placement Management System');
+        setLogoText('Vishveshwarya Group of Institutions');
       }
     };
 
@@ -51,11 +51,11 @@ function LandingNavbar() {
           onClick={() => navigate('/')}
         >
           <img
-            src={Logo}
-            alt="CPMS Logo"
-            className="rounded-xl border border-gray-300 w-16 h-16 md:w-20 md:h-20 shadow-sm"
+            src={logoImg}
+            alt="Vishveshwarya Group of Institutions Logo"
+            className="rounded-xl border border-gray-300 w-16 h-16 md:w-20 md:h-20 shadow-sm object-contain bg-white p-1"
           />
-          <h1 className={`text-2xl md:text-4xl font-extrabold bg-gradient-to-r from-indigo-600 to-emerald-500 bg-clip-text text-transparent`}>
+          <h1 className={`text-xl md:text-3xl font-extrabold bg-gradient-to-r from-indigo-600 to-emerald-500 bg-clip-text text-transparent`}>
             {logoText}
           </h1>
         </div>

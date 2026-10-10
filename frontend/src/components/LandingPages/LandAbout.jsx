@@ -38,9 +38,9 @@ function LandAbout() {
       className="bg-gradient-to-tr from-pink-100 via-purple-100 to-pink-100 py-10 scroll-mt-24"
     >
       <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold mb-3 playfair">About CPMS</h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-3 playfair">About Vishveshwarya Group of Institutions</h2>
         <p className="text-md md:text-lg max-w-3xl mx-auto text-gray-700 px-3">
-          Developed by final year students of Rizvi College of Engineering, CPMS (College Placement Management System) is a powerful web-based platform to streamline and manage campus placements efficiently.
+          Vishveshwarya Group of Institutions (VGI) Campus Placement Management System is a powerful web-based platform to streamline and manage campus placements efficiently.
         </p>
       </div>
 

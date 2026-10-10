@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "sync-assets": "node -e \"const fs=require('fs'); if(fs.existsSync('../logo.png')){fs.copyFileSync('../logo.png', 'public/logo.png'); fs.copyFileSync('../logo.png', 'src/assets/logo.png'); fs.copyFileSync('../logo.png', 'src/assets/CPMS.png');} if(fs.existsSync('../Home.png')){fs.copyFileSync('../Home.png', 'public/Home.png'); fs.copyFileSync('../Home.png', 'src/assets/Home.png'); fs.copyFileSync('../Home.png', 'src/assets/heroImg.jpg');}\"",
+    "dev": "npm run sync-assets && vite",
+    "build": "npm run sync-assets && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },

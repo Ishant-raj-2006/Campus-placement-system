@@ -122,7 +122,7 @@ function LoginManagement() {
               Click Here
             </span>
           </span>
-          <p className="text-muted text-center text-gray-400">© College Placement Management System 2024 - 25</p>
+          <p className="text-muted text-center text-gray-400">© Vishveshwarya Group of Institutions 2024 - 25</p>
         </form>
       </div>
     </>

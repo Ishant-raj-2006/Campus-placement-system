@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import HeroImg from '../../assets/heroImg.jpg';
+import heroImg from '@root/Home.png';
 import { useNavigate } from 'react-router-dom';
 
 function LandingHeroPage() {
@@ -22,22 +22,22 @@ function LandingHeroPage() {
     <section
       id="home"
       className="relative h-[90vh] w-full flex items-center justify-center bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: `url(${HeroImg})` }}
+      style={{ backgroundImage: `url(${heroImg})` }}
     >
       {/* Dark glass overlay */}
-      <div className="absolute inset-0 bg-black/40 bg-opacity-20 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
 
       {/* Content */}
-      <div className="relative z-20 max-w-5xl text-center">
-        <h1 className="text-white text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight drop-shadow-md">
+      <div className="relative z-20 max-w-5xl text-center px-4">
+        <h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight drop-shadow-md">
           Empower Your Career with <br />
-          <span className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-transparent bg-clip-text">
-            CPMS Portal
+          <span className="bg-gradient-to-r from-green-300 via-blue-400 to-purple-400 text-transparent bg-clip-text">
+            Vishveshwarya Group of Institutions
           </span>
         </h1>
 
-        <p className="mt-6 text-gray-300 text-lg sm:text-xl font-light">
-          Discover opportunities, track progress, and connect with your tpo — all in one place.
+        <p className="mt-6 text-gray-200 text-lg sm:text-xl font-medium drop-shadow">
+          Placement Management System — Discover opportunities, track progress, and connect with TPO.
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
