@@ -28,7 +28,7 @@ function LandFooter() {
 
         {/* Footer Text */}
         <div className="text-center text-sm text-gray-600">
-          <p>© 2024 - 25 <span className="text-green-600 font-semibold">Vishveshwarya Group of Institutions</span>. All rights reserved.</p>
+          <p>© <span className="text-green-600 font-semibold">Vishveshwarya Group of Institutions</span>. All rights reserved.</p>
           <p className="mt-1 text-xs text-gray-500">Placement Management System - Vishveshwarya Group of Institutions</p>
         </div>
       </div>

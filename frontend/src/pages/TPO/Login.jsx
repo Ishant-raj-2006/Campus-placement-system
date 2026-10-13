@@ -120,7 +120,7 @@ function LoginTPO() {
               Click Here
             </span>
           </span>
-          <p className="text-muted text-center text-gray-400">© Vishveshwarya Group of Institutions 2024 - 25</p>
+          <p className="text-muted text-center text-gray-400">© Vishveshwarya Group of Institutions</p>
         </form>
       </div>
     </>

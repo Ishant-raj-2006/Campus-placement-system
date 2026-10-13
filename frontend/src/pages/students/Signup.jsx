@@ -177,7 +177,7 @@ function Signup() {
           <span className='text-center'>Already having account?
             <span className='text-blue-500 font-bold cursor-pointer px-1' onClick={() => navigate('../student/login')}>Login</span>
           </span>
-          <p className="text-muted text-center text-gray-400">© Vishveshwarya Group of Institutions 2024 - 25</p>
+          <p className="text-muted text-center text-gray-400">© Vishveshwarya Group of Institutions</p>
         </form>
       </div>
     </>
